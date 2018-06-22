@@ -1,0 +1,21 @@
+version: '2'
+services:
+  sshop:
+    # volumes:
+    #   - ./www:/app
+    build: .
+    # links:
+    #   - mariadb
+    ports:
+      - "80:8080"
+    # command: chown MARS /app -R
+    command: python main.py
+  # mariadb:
+  #   image: mariadb:10.1
+  #   expose:
+  #     - "3306"
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=Hu8u_@M4r5_
+  #     - MYSQL_DATABASE=test
+  #     - MYSQL_USER=art3mis
+  #     - MYSQL_PASSWORD=4rt3M15_

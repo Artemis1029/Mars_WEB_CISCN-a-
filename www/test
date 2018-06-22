@@ -1,0 +1,4 @@
+rm -rf a
+mkdir a
+python sshop/models.py
+python main.py 

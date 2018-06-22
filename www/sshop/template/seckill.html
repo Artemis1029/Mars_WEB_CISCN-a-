@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="jumbotron">
+       <h1>秒杀活动</h1>
+        <form action="" method="post">
+            {% raw xsrf_form_html() %}
+            <input class="hidden" name="id" value="1">
+            
+            {% if seckill %}
+            <tr>
+                    <td class="commodity-name">{{ seckill.name }}</td>
+                    <br/>
+                    <td>{{seckill.desc}}</td>
+                    <br/>
+                    <td>old price :  {{seckill.price}} </td>
+                    <br/>
+                    <td>now price : {{seckill.price / 2}}</td>
+                    <br/>
+                    <td class="commodity-name">count : {{seckill.amount}}</td>
+                    </tr>
+                    <br/>
+                   {% end %} 
+                   <button class="btn btn-danger" type="submit">秒杀</button>        
+                </form>
+    </div>
+{% end %}

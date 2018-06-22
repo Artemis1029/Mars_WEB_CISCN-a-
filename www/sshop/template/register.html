@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block body %}
+        <div class="row">
+        <div class="col-md-10 col-md-offset-1 well">
+            <form action="/register" method="post" class="col-lg-6 col-lg-offset-3">
+                {% raw xsrf_form_html() %}
+                <div class="form-group">
+                    <label for="name">Username</label>
+                    <input type="text" name="username" placeholder="Your Username" required class="form-control" />
+                </div>
+
+
+                <div class="form-group">
+                        <label for="name">E-mail</label>
+                        <input type="email" name="mail" placeholder="Your E-mail" required class="form-control" />
+                    </div>
+
+                <div class="form-group">
+                    <label for="name">Password</label>
+                    <input type="password" name="password" placeholder="Your Password" required class="form-control" />
+                </div>
+           
+                <div class="form-group">
+                        <label for="name">Password Again</label>
+                        <input type="password" name="password_confirm" placeholder="Your Password" required class="form-control" />
+                    </div>
+
+
+                <div class="form-group">
+                        <label for="name">Invite User</label>
+                        <input type="text" name="invite_user" placeholder="Invite User" class="form-control"/>
+                    </div>
+
+
+                 <div>
+                    <label>{{ ques }}</label><br/>
+                    <canvas id="vtt_captcha"width="272" height="184"  rel="{{ uuid }}"></canvas>
+                    <input type="hidden" id="captcha_x" name="captcha_x" value="">
+                    <input type="hidden" id="captcha_y" name="captcha_y" value="">
+                </div>
+                <button class="btn btn-default pull-right" type="submit">register</button>
+            </form>
+            </div>
+            </div>
+        <br/>
+{% include "captcha.html" %}
+{% end %}

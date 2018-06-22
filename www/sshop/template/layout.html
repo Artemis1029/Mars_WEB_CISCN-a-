@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <title>my_flag_shop</title>
+    <link href="{{ static_url('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('css/jumbotron-narrow.css') }}" rel="stylesheet">
+</head>
+
+
+<body>
+
+<div class="container">
+    <div class="well well-sm">
+    <strong>Flag Shop</strong>
+    <div class="btn-group" style="float:right"><!--</div>; text-align:center ">-->
+         <div class="btn-group">
+        <a href="/shop" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-th-list">
+          </span>商品列表</a> 
+          {% if current_user %}
+        <a href="/user" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-th-list">
+          </span>个人中心</a> 
+        <a href="/seckill" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-th-list">
+          </span>秒杀活动</a> 
+        <a href="/shopcar" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-th-list">
+          </span>购物车</a> 
+        <a href="/user/change" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-th-list">
+          </span>修改密码</a>
+        <a href="/logout" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-th-list">
+          </span>注销</a> 
+          {% else %}
+        <a href="/login" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-th-list">
+          </span>登录</a>  
+        <a href="/register" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-th-list">
+          </span>注册</a>  
+          {% end%}
+    </div>
+    </div></div>
+  </div>
+    {% try %}
+        {% if success %}
+        <div class="alert alert-success alert-dismissable">
+        <script>
+          alert("{{ success }}")
+        </script>
+            </div>
+        {%end%}
+    {% except %}
+    {% end %}
+
+    {% try %}
+        {% if danger %}
+        <script>
+          alert("{{ danger }}")
+        </script>
+        {% end %}
+    {% except %}
+    {% end %}
+    {% block body %}{% end %}
+    <footer class="footer">
+        <p>&copy; 2018 Mars HUBU.</p>
+    </footer>
+</div> 
+</body>
+</html>

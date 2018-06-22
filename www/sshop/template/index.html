@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="row marketing">
+
+    <div class="commodity-list">
+            <div class="col-md-10 col-md-offset-1 well">
+        <table class="table">
+            <tr>
+                <th>name</th>
+                <th>price</th>
+                <th>to do</th>
+            </tr>
+            {% for data in commoditys %}
+            <tr>
+                <td class="commodity-name"><a href="/info/{{ data.id }}">{{ data.name }}</a></td>
+                <td>{{ data.price }}</td>
+                <td>
+                    <a href="javascript:;" onclick="document.getElementById('{{ data.name }}-{{ data.id }}').submit();">send to shopcar</a>
+                    <form action="/shopcar/add" method="post" id="{{ data.name }}-{{ data.id }}">
+                         {% raw xsrf_form_html() %}
+                        <input type="hidden" name="id" value="{{ data.id }}">
+                    </form>
+                </td>
+            </tr>
+            {% end %}
+        </table>
+
+    </div>
+    </div>
+    <div class="pagination col-lg-12">
+        {% if preview-1 >= 0 %}
+        <a href="?page={{ preview }}">上一页</a>
+        {% end %}
+        {% if len(commoditys) < limit or not next %}
+        {% else %}
+        <a href="?page={{ next }}" class="pull-right">下一页</a>
+        {% end %}
+    </div>
+</div>
+{% end %}

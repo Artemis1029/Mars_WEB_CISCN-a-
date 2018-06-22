@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="jumbotron">
+       <h1>购物车</h1>
+        {% try %}
+        {% if commodity %}
+        
+        <div class="shopcar_list">
+            <ul class="list-group">
+                    {% for data in commodity %}
+                <li class="list-group-item">{{ data.name }} / {{ data.price }}  
+                        </li>
+               
+                {% end %}
+            </ul>
+            
+            <form action="" method="post">
+                {% raw xsrf_form_html() %}
+                <input type="hidden" name="price" value=
+                "{% for data in commodity %}{{ data.name }} {%end%} : {{ price }}">
+                <button class="btn btn-danger" type="submit">结算</button>
+            </form>
+        </div>
+        {%end%}
+        {% except %}
+        {% end %}
+    </div>
+{% end %}
