@@ -26,6 +26,4 @@ USER MARS
 
 CMD python main.py 
 
-# 测试
-# LTAI4GFMQAcDCYMnSbnhLaJz
-# mxzTwx7ur8J6fIU2hnsmi5q7vKcWIv
+
